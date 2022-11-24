@@ -1,0 +1,1354 @@
+--------------------------Assignment 1 SIMPLE JAVA------------------------
+
+01]Write a program to find the sum of digits and reverse of a given integer number.
+
+class MyFirstProg {
+ public static void main (String[] args) {
+ int a = Integer.parseInt(args[0]);
+ int b = 0, ans = 0;
+ while (a != 0) {
+ int temp = a % 10;
+ b = 10 * b + temp;
+ ans += temp;
+ a /= 10;
+ }
+ System.out.println("Sum = " + ans);
+ System.out.println("Reversed = " + b);
+ }
+}
+
+02] Write a program to determine sum of the following series for given value of  n: 1+1/2+1/3+......+1/n.
+
+class MyFirstProg {
+ public static void main(String[] args) {
+ int n = Integer.parseInt(args[0]);
+ double ans = 0.0D;
+ while (n > 0) {
+ ans += (1.0D / n);
+ n--;
+ }
+ System.out.println("Sum = " + ans);
+ }
+}
+
+03] Write a program to find the factorial of a given integer number using recursion .
+
+import java.util.*;
+class factorial
+{
+static int factorial(int n)
+{
+if(n==0)
+return 1;
+else
+return(n*factorial(n-1));
+}
+public static void main(String[] args)
+{
+int i,fact=1;
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the number");
+int number=sc.nextInt();
+fact=factorial(number);
+System.out.println("factorial of"+number+"is"+fact);
+}
+}
+
+04] Write a program to find the real roots of the quadratic equation ax^2+bx+c=0 where a,b and c are constants.
+
+import java.lang.Math;
+class MyFirstProg {
+ public static void main(String[] args) {
+ int a = Integer.parseInt(args[0]), b = Integer.parseInt(args[1]), c = Integer.parseInt(args[2]);
+ double ans1 = 0.0D, ans2 = 0.0D;
+ int d = b * b - 4 * a * c;
+ if (d < 0) {
+ System.out.println("Imaginary roots");
+ } else if (d == 0) {
+ ans1 = -1.0D * b / 2 * a;
+ System.out.println("Roots are equal. Root =\n" + ans1);
+ } else {
+ ans1 = (-1.0D + Math.sqrt(d)) / 2 * a;
+ ans2 = (-1.0D - Math.sqrt(d)) / 2 * a;
+ System.out.println("Roots =\n" + ans1 + "\n" + ans2);
+ }
+ }
+}
+
+
+05] Write a program to calculate the gcd of two integer numbers.
+
+class MyFirstProg {
+ public static void main(String[] args) {
+ int a = Integer.parseInt(args[0]), b = Integer.parseInt(args[1]);
+ while(true) {
+ if (a % b == 0) {
+ System.out.println("GCD is " + b);
+ break;
+ }
+ else {
+ int temp = b;
+ b = a % b;
+ a = temp;
+ }
+ }
+ }
+}
+
+-----------Assignment2  class object constructor-------------
+
+01] Write a program to find surface area and volume of cylinder using constructor.
+
+class AreaVolume{
+ int radius;
+ int height;
+ double area;
+ double volume;
+ AreaVolume(int radius, int height){
+ this.radius = radius;
+ this.height = height;
+ }
+ void getSurfaceArea(){
+ area = 2 * Math.PI * radius * (radius + height);
+ }
+ void getVolume(){
+ volume = Math.PI * radius * radius * height;
+ }
+ void display(){
+ System.out.println("Surface Area of Cylinder is: " + area);
+ System.out.println("Volume of Cylinder is: " + volume);
+ }
+}
+class cylinder{
+ public static void main(String[] args) {
+ int radius = Integer.parseInt(args[0]);
+ int length = Integer.parseInt(args[1]);
+ AreaVolume c = new AreaVolume(radius, length);
+ c.getSurfaceArea();
+ c.getVolume();
+ c.display();
+ }
+ 
+}
+
+02] Create a class named First ,make instance variable int x, instance method void show() and 
+put main method inside that class and use the instance variable and method from main
+
+class B {
+int x; B(int y) {
+x=y;
+}
+void fun() {
+ System.out.println("value of x is "+x); }
+public static void main(String[] arg)
+{
+int r; r=Integer.parseInt(arg[0]); B ob1=new B(r);
+
+ ob1.fun(); }
+}
+
+03] Create a class make an instant variable and instant method. Use them from main which is declared in different class.[command line argument].
+
+class B
+{
+int x;
+B(int y)
+{
+x=y;
+}
+void fun()
+{
+System.out.println("value of x is "+x);
+}
+}
+class A
+{
+public static void main(String[] arg)
+{
+int r; r=Integer.parseInt(arg[0]); B ob1=new B(r); ob1.fun();
+}
+}
+
+---------------------------Assignment 3--------------------------
+
+01] Develop a program to swap two numbers using Pass by Value method
+
+class Test{
+static void SwapByVal(int x,int y)
+{
+System.out.println("Before call: x="+x+"y="+y);
+int t=y;
+y=x;
+x=t;
+System.out.println("After call: x="+x+"y="+y);
+}
+public static void main(String args[])
+{
+int a=10,b=20;
+SwapByVal(a,b);
+}
+}
+
+02] Develop a program to swap two numbers using pass by reference method.
+
+public class Pbr{
+int a,b;
+Pbr(int a,int b)
+{
+this.a=a;
+this.b=b;
+}
+static void swapbyref(Pbr ob)
+{
+int t=ob.a;
+ob.a=ob.b;
+ob.b=t;
+}
+public static void main(String[] args)
+{
+Pbr obj=new Pbr(10,20);
+System.out.println("Before call : obj a="+obj.a+"obj b="+obj.b);
+swapbyref(obj);
+System.out.println("After call: obj a="+obj.a+"obj b="+obj.b);
+}
+} 
+
+03] Develop a program in Java to show how a method returns an object .
+
+class test{
+int a;
+test(int a)
+{
+this.a=a;
+}
+test mrobj(test ob)
+{
+test t=new test(ob.a+10);
+return t;
+}
+}
+public class testing{
+public static void main(String args[])
+{
+test t1=new test(10);
+System.out.println("t1.a="+t1.a);
+test t2=t1.mrobj(t1);
+System.out.println("t2.a="+t2.a);
+}
+}
+
+04] Write a program in java to make a student class with proper attributes like roll,name,stream,college and grade. From main() create such two students and show their information.
+
+class Student
+{
+String name; int rollno; String stream; String college; String grade; Student(String n,int r,String s,String c,String g)
+{
+this.name=n; this.rollno=r; this.stream=s; this.college=c; this.grade=g;
+}
+public void display()
+{
+System.out.println("NAME : "+this.name); System.out.println("ROLL_NO : "+this.rollno); System.out.println("STREAM : "+this.stream); System.out.println("COLLEGE : "+this.college); System.out.println("GRADE : "+this.grade);
+}}
+class A{
+ 
+public static void main(String[] arg){
+Student s1=new Student("Debayudh Mitra",69,"CSE","IEM","A"); Student s2=new Student("VIJAY KUMAR",46,"IT","UEM","B"); s1.display();
+s2.display();
+}}
+
+----------- Thread assignment -----------
+
+1. Inherit a class from Thread and override the run( ) method. Inside run( ), print name of
+thread , and then call sleep( ). Repeat this three times, then return from run( ). Put a startup message in the constructor. Make your thread object and main thread run to see what
+happens.
+2. Implement a class from Runnable and override the run( ) method. Inside run( ), print full
+qualified name of thread, and then call sleep( ). Repeat this three times, then return from
+run( ). Put a start-up message in the constructor. Make your thread object and main thread
+run to see what happens.
+3. Make several threads (say 5) with names (by extending thread), set their priority and run
+them to see what happens.
+4. Make several threads (say 5) with their names (implementing Runnable) set their priority
+and run them to see what happens.
+5. Write a program to use join() and isAlive() in Multi-Threading.
+6. Implement a program of locking of a common method by several threads. (Using the
+keyword ‘synchronized’).
+7. Write a program to implement inter-thread communication the consumer consumes items
+produced by the producer with proper synchronization.
+
+Solution :-
+
+01) public class Question1 extends Thread {
+ Question1(String name) {
+ super(name);
+ System.out.println("Started");
+ }
+ public void run() {
+ for (int i = 0; i < 3; i++) {
+ System.out.println(this.getName());
+ try {
+ this.sleep(1000);
+ } catch (Exception e) {
+ System.out.println(e);
+ }
+ }
+ }
+ public static void main(String[] args) {
+ Question1 q1 = new Question1("Banerjee");
+ System.out.println(Thread.currentThread().getName());
+ System.out.println("Nibedan : " + q1.getName());
+ q1.start();
+ try {
+ q1.join();
+ } catch (Exception e) {
+ System.out.println(e);
+ }
+ System.out.println("Main exited");
+ }
+}
+
+02) public class Question2 implements Runnable {
+ Question2(String name) {
+ System.out.println("Started");
+ }
+ public void run() {
+ for (int i = 0; i < 3; i++) {
+ System.out.println(Thread.currentThread().getName());
+ try {
+ Thread.sleep(1000);
+ } catch (Exception e) {
+ System.out.println(e);
+ }}}
+ public static void main(String[] args) {
+ Question2 q2 = new Question2("Amar Thread");
+ Thread t = new Thread(q2, "Nibedan");
+ System.out.println(Thread.currentThread().getName());
+ System.out.println("Bhalo naam: " + t.getName());
+ t.start();
+ try {
+ t.join();
+ } catch (Exception e) {
+ System.out.println(e);
+ }
+ System.out.println("Main exited");
+ }
+}
+
+03)public class Question3 extends Thread {
+ Question3(String naam) {
+ super(naam);
+ }
+ public void run() {
+ for (int i = 0; i < 3; i++) {
+ System.out.println(this + " [Timed: " + (i + 1) + "]");
+ }
+ }
+ public static void main(String[] args) {
+ Question3 qs[] = new Question3[5];
+ for (int i = 1; i < 6; i++) {
+ qs[i - 1] = new Question3("Named Number #" + i);
+ qs[i - 1].setPriority(i);
+ qs[i - 1].start();
+ }
+ }
+}
+
+04) public class Question4 implements Runnable {
+ public void run() {
+ for (int i = 0; i < 3; i++) {
+ System.out.println(Thread.currentThread().getName() + " [Timed: " + (i + 1) + "]");
+ }
+ }
+ public static void main(String[] args) {
+ Thread qs[] = new Thread[5];
+ for (int i = 1; i < 6; i++) {
+ qs[i - 1] = new Thread(new Question4(), "Named Number #" + i);
+ qs[i - 1].setPriority(i);
+ qs[i - 1].start();
+ }
+ }
+}
+
+05) class MyRunnableClass implements Runnable {
+ public void run() {
+ for (int i = 0; i < 5; i++) {
+ System.out.println(Thread.currentThread().getName() + " i - " + i);
+ try {
+ Thread.sleep(100);
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+ }
+ }
+}
+public class Question5 {
+ public static void main(String[] args) {
+ Thread t1 = new Thread(new MyRunnableClass(), "t1");
+ Thread t2 = new Thread(new MyRunnableClass(), "t2");
+ Thread t3 = new Thread(new MyRunnableClass(), "t3");
+ t1.start();
+ t2.start();
+ t3.start();
+ System.out.println("t1 Alive - " + t1.isAlive());
+ System.out.println("t2 Alive - " + t2.isAlive());
+ System.out.println("t3 Alive - " + t3.isAlive());
+ try {
+ t1.join();
+ t2.join();
+ t3.join();
+ } catch (InterruptedException e) {
+ e.printStackTrace();
+ }
+ System.out.println("t1 Alive - " + t1.isAlive());
+ System.out.println("t2 Alive - " + t2.isAlive());
+ System.out.println("t3 Alive - " + t3.isAlive());
+ System.out.println("Processing finished");
+ }
+}
+
+06)public class Question6 implements Runnable {
+ public void run() {
+ for (int i = 0; i < 3; i++) {
+ showMe();
+ try {
+ Thread.sleep(500);
+ } catch (Exception e) {
+ System.out.println(e);
+ }
+ }
+ }
+ synchronized void showMe() {
+ for (int i = 0; i < 3; i++) {
+ System.out.println(Thread.currentThread().getName() + ": " + i);
+ try {
+ Thread.sleep(100);
+ } catch (Exception e) {
+ System.out.println(e);
+ }
+ }
+ }
+ public static void main(String[] args) throws InterruptedException {
+ Question6 base = new Question6();
+ Thread t1 = new Thread(base, "Thread 1");
+ Thread t2 = new Thread(base, "Thread 2");
+ t1.start();
+ t2.start();
+ t1.join();
+ t2.join();
+ }
+}
+
+07) class ItemQueue {
+ int item;
+ boolean valueSet = false;
+ synchronized int getItem()
+ {
+ while (!valueSet)
+ try {
+ wait();
+ } catch (InterruptedException e) {
+ System.out.println("InterruptedException caught");
+ }
+ System.out.println("Consummed:" + item);
+ valueSet = false;
+ try {
+ Thread.sleep(1000);
+ } catch (InterruptedException e) {
+ System.out.println("InterruptedException caught");
+ }
+ notify();
+ return item;
+ }
+ synchronized void putItem(int item) {
+ while (valueSet)
+ try {
+ wait();
+ } catch (InterruptedException e) {
+ System.out.println("InterruptedException caught");
+ }
+ this.item = item;
+ valueSet = true;
+ System.out.println("Produced: " + item);
+ try {
+ Thread.sleep(1000);
+ } catch (InterruptedException e) {
+ System.out.println("InterruptedException caught");
+ }
+ notify();
+ }}
+class Producer implements Runnable {
+ ItemQueue itemQueue;
+ Producer(ItemQueue itemQueue) {
+ this.itemQueue = itemQueue;
+ new Thread(this, "Producer").start();
+ }
+ public void run() {
+ int i = 0;
+ while (true) {
+ itemQueue.putItem(i++);
+ }}}
+class Consumer implements Runnable {
+ ItemQueue itemQueue;
+ Consumer(ItemQueue itemQueue) {
+ this.itemQueue = itemQueue;
+ new Thread(this, "Consumer").start();
+ }
+ public void run() {
+ while (true) {
+ itemQueue.getItem();
+ }}}
+class Question7 {
+ public static void main(String args[]) {
+ ItemQueue itemQueue = new ItemQueue();
+ new Producer(itemQueue);
+ new Consumer(itemQueue);
+ }}
+
+
+
+-----------  inheritance, polymorphism, and abstract classes assignment -----------
+
+
+1. Create a class and determine if method overloading holds good for return type of methods or
+not.
+2. Overload the constructors for classes Area and Volume of a rectangular figure and also display
+its area and volume. Area is the superclass and Volume is the subclass.
+3. Create a class Employee is having instance variables name and id. Create its subclass named
+Scientist which has instance variables no_of_publication and experience. Now create its subclass,
+say DScientist which has instance variable award. Put a method like:
+public String toString(){ } in every class where you describe about the class and
+from main() method create object of each class and print each object.
+4. Create a class with a method void show() and make three subclasses of it and all
+subclasses have this show() method overridden and call those methods using their corresponding
+object references.
+5. Do the problem 4 using dynamic method dispatching.
+6. Check without having any abstract method/s whether a class can be abstract; if so, then use that
+concrete method(s) from another class having main method.
+7. Create an abstract class with three abstract methods check whether you can we override only
+few methods (not all methods) in subclass or not.
+8. Create a class Parent having instance variables id, name and address. Create a class ChildOne
+having instance variables id, name, address and marks. Also create another class ChildTwo with
+instance variables id, name, address, qualification and salary. Within each class define your own
+method to display values of these variables. Design the program using super call with proper
+parameter and use object of each class from main() to display their properties.
+
+
+
+
+01)public class Test {
+ int getValue() {
+ return 1;
+ }
+ double getValue() {
+ return 2.0;
+ }
+ public static void main(String[] args) {
+ Test t = new Test();
+ System.out.println(t.getValue());
+ }
+}
+
+
+public class Test2 {
+ int getValue() {
+ return 1;
+ }
+ double getValue(double v) {
+ return v;
+ }
+ public static void main(String[] args) {
+ Test2 t = new Test2();
+ System.out.println(t.getValue());
+ }
+}
+
+02)Overload the constructors for class Box for cube and cone and also display its volume..
+
+public class Box {
+ int h, r;
+ boolean isCube;
+ Box(int h) {
+ this.h = h;
+ this.isCube = true;
+ }
+ Box(int r, int h) {
+ this.r = r;
+ this.h = h;
+ this.isCube = false;
+ }
+ double getVolume(boolean chck) {
+ return 0.00;
+ }
+ double getVolume() {
+ return this.isCube ? Math.pow(this.h, 3) : Math.PI * Math.pow(this.r, 2) * (this.h / 3);
+ }
+ public static void main(String[] args) {
+ Box cube = new Box(2);
+ Box cone = new Box(2, 3);
+ System.out.println("Cube : " + String.format("%.2f", cube.getVolume()));
+ System.out.println("Cone : " + String.format("%.2f", cone.getVolume()));
+ }
+}
+
+03)public class EMP {
+ String name;
+ int id;
+ EMP(String name, int id) {
+ this.name = name;
+ this.id = id;
+ }
+ public String toString() {
+ return String.format("[%s Class] Name: %s, ID: %d",
+ this.getClass().getEnclosingClass() == null ? this.getClass().getSimpleName()
+ : this.getClass().getEnclosingClass().getSimpleName(),
+ this.name, this.id);
+ }
+ public static void main(String[] args) {
+ EMP e = new EMP("Nibedan Banerjee", 1);
+ Scientist s = new Scientist("Nibedan Banerjee", 1, 999999, "Expert");
+ Dscientist d = new Dscientist("Nibedan Banerjee", 1, 999999, "Expert", "Professional Scientist");
+ System.out.println(e);
+ System.out.println(s);
+ System.out.println(d);
+ }
+}
+class Scientist extends EMP {
+ int no_of_publication;
+ String experience;
+ Scientist(String name, int id, int no_of_publication, String experience) {
+ super(name, id);
+ this.no_of_publication = no_of_publication;
+ this.experience = experience;
+ }
+ public String toString() {
+ return super.toString() + String.format(" > [%s Class] No. of publications: %d, Experience: %s",
+ this.getClass().getSimpleName(), this.no_of_publication, this.experience);
+ }
+}
+class Dscientist extends Scientist {
+ String award;
+ Dscientist(String name, int id, int no_of_publication, String experience, String award) {
+ super(name, id, no_of_publication, experience);
+ this.award = award;
+ }
+ public String toString() {
+ return super.toString() + String.format(" > [%s Class] Award: %s", this.getClass().getSimpleName(),
+this.award);
+ }
+}
+
+04)& 05) public class ShowMe {
+ public static void main(String[] args) {
+ if (args.length < 1) {
+ System.out.println("Please supply question number! ");
+ return;
+ }
+ if (Integer.parseInt(args[0]) == 5) {
+ Master m1 = new Master();
+ m1.show();
+ m1 = new Slave1();
+ m1.show();
+ m1 = new Slave2();
+ m1.show();
+ m1 = new Slave3();
+ m1.show();
+ } else if (Integer.parseInt(args[0]) == 4) {
+ Master m1 = new Master();
+ Slave1 s1 = new Slave1();
+ Slave2 s2 = new Slave2();
+ Slave3 s3 = new Slave3();
+ m1.show();
+ s1.show();
+ s2.show();
+ s3.show();
+ } else
+ System.out.println("Use 4 for Question 4 or 5 for Question 5.");
+ }
+}
+class Master {
+ void show() {
+ System.out.println("Showing from Master " + this.getClass().getSimpleName());
+ }
+}
+class Slave1 extends Master {
+ void show() {
+ System.out.println("Showing from Slave #1 " + this.getClass().getSimpleName());
+ }
+}
+class Slave2 extends Master {
+ void show() {
+ System.out.println("Showing from Slave #2 " + this.getClass().getSimpleName());
+ }
+}
+class Slave3 extends Master {
+ void show() {
+ System.out.println("Showing from Slave #3 " + this.getClass().getSimpleName());
+ }
+}
+
+06)public class Temp {
+ public static void main(String[] args) {
+ A.display();
+ }
+}
+abstract class A {
+ static void display() {
+ System.out.println("Hello World");
+ }
+}
+
+07)public class AbsClass extends Parent {
+ void show1() {
+ System.out.println("Modified Show 1");
+ }
+ // void show2() {
+ // System.out.println("Modified Show 2");
+ // }
+ public static void main(String[] args) {
+ AbsClass abc = new AbsClass();
+ abc.show1();
+ abc.show2();
+ abc.show3();
+ }
+}
+abstract class Parent {
+ abstract void show1();
+ abstract void show2();
+ void show3() {
+ System.out.println("Original Show 3");
+ }
+}
+
+// working one 
+
+public class AbsClass1 extends Parent {
+ void show1() {
+ System.out.println("Modified Show 1");
+ }
+ void show2() {
+ System.out.println("Modified Show 2");
+ }
+ public static void main(String[] args) {
+ AbsClass1 abc = new AbsClass1();
+ abc.show1();
+ abc.show2();
+ abc.show3();
+ }
+}
+abstract class Parent {
+ abstract void show1();
+ abstract void show2();
+ void show3() {
+ System.out.println("Original Show 3");
+ }
+}
+
+08) import java.util.*;
+public class Parent {
+ Scanner sc = new Scanner(System.in);
+ int id;
+ String name;
+ String address;
+ Parent() {
+ System.out.println("enter name");
+ this.name = sc.next();
+ System.out.println("enter address");
+ this.address = sc.next();
+ System.out.println("enter id");
+ this.id = sc.nextInt();
+ }
+ void display() {
+ System.out.println("name is " + name);
+ System.out.println("the address is " + address);
+ System.out.println("the id is " + id);
+ }
+ public static void main(String[] args) {
+ System.out.println("---parent---");
+ Parent p = new Parent();
+ p.display();
+ System.out.println("---ChildOne---");
+ ChildOne c1 = new ChildOne(80);
+ c1.display();
+ System.out.println("---ChildTwo---");
+ ChildTwo c2 = new ChildTwo();
+ c2.display();
+ }
+}
+class ChildOne extends Parent {
+ Scanner sc = new Scanner(System.in);
+ float marks;
+ ChildOne(float m) {
+ super();
+ System.out.println("enter marks");
+ this.marks = m;
+ }
+ void display() {
+ super.display();
+ System.out.println("the marks is " + marks);
+ }
+}
+class ChildTwo extends Parent {
+ Scanner sc = new Scanner(System.in);
+ String qualification;
+ double salary;
+ ChildTwo() {
+ super();
+ System.out.println("enter qualification");
+ this.qualification = sc.next();
+ System.out.println("enter salary");
+ this.salary = sc.nextDouble();
+ }
+ void display() {
+ super.display();
+ System.out.println("qualification is " + qualification);
+ System.out.println("salary is " + salary);
+ }
+}
+
+
+
+
+-----------  string assignment -----------
+
+
+1. Take a sting from keyboard and convert into character array (new one).
+2. Take a string from keyboard and a char array (filled up to length 5). Now append the string
+to that char array. Show the char array.
+3. Find length of a string taken from keyboard and also find the length of that string except
+front and end spaces.
+4. Check if "Tech" presents in "University of Technology" or not. If yes return its position.
+5. Write a program to take a sentence and convert it into string arrays and sort the words using
+any sorting technique.
+6. Generate password from initials of one’s first_name, middle_name, last_name and with last
+four digit of your roll_no (if middle name is not present, it won't come).
+7. Write a program in Java which will read a string and rewrite it in the alphabetical order.
+For example, the word STRING should be written as GINRST.
+8. Write a program in Java to extract a portion of a character string and print the extracted
+string. Assume that m characters are extracted, starting with the n-th character. The
+method signature will be like: void extract(String str, int n, int m).
+9. Write your own method is having a signature like String deleteMe(String str, int
+m) that returns the input string with the m-th element removed.
+10. Write a program to do the following:
+ i) To output the question “Who is the inventor of Java”?
+ ii) To accept an answer.
+ iii) To print out “Good” and then stop, if the answer is correct.
+ iv) To output the message “Try Again” and then stop, if the answer is wrong.
+ v) To display the correct answer when the answer is wrong even at the third
+ attempts and stop.
+11. Show that the String class type objects are immutable but StringBuffer class objects are
+mutable.
+12. Write a program in Java to create a StringBuffer object with content “Object Programming
+languages”. Then perform the following operations:
+i) Print the object and determine its length and capacity.
+ii) Inset a new string “Oriented” after the word “Object”. Print the modified string.
+iii) Insert a character ‘-’ at the 6-th position. Print the modified string again.
+iv) Append another string named “ are very popular.” Print the resulting string.
+v) Now delete the character ‘-’ and put a space (“ ”) there. Print it.
+vi) Apply these operations one-by-one: (a) delete(1, 7), (b) delete(2, 10), and
+ (c) delete(3, 13). Then print the result.
+vii) Convert the StringBuffer type object into a String object. Print the final result.
+13. Write a program in Java that checks whether a given string is a palindrome or not. Ignore
+the cases.
+
+
+
+
+01) import java.util.*;
+class tochar
+{
+public static void main(String args[])
+{
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter the string");
+String str=sc.nextLine();
+char ch[]=str.toCharArray();
+System.out.println("The character array is:\n");
+for(int i=0;i<ch.length;i++)
+System.out.println(ch[i]+"");
+}
+}
+
+
+02)import java.util.*;
+class append
+{
+public static void main(String args[])
+{
+int i;
+String s,sp;
+String str="Student";
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the string");
+s=sc.nextLine();
+sp=s.concat(str);
+char ch[]=new char[sp.length()];
+for(i=0;i<=sp.length();i++)
+{
+ch[i]=sp.charAt(i);
+System.out.println(ch[i]);
+}
+}
+}
+
+
+03)import java.util.*;
+class length
+{
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the string: ");
+String str=sc.nextLine();
+int n=str.length();
+System.out.println("The length of the string:"+n);
+System.out.println("The length after removing the front and end spaces:"+
+(str.trim()).length());
+}
+}
+
+04)class pos
+{
+public static void main(String args[])
+{
+String s="University of Technology";
+String st="Tech";
+char ch[]=new char[s.length()];
+char stp[]=new char[st.length()];
+for(int i=0,j=0;i<s.length();i++)
+{
+ch[i]=s.charAt(i);
+stp[j]=st.charAt(j);
+if(ch[i]==stp[j])
+System.out.println("In position "+ i +" the word is found");
+}
+}
+}
+
+05)import java.util.*;
+public class sort
+{
+static void sort(String []str,int n)
+{
+for(int i=1;i<n;i++)
+{
+String temp=str[i];
+int j=i-1;
+while(j>=0 && temp.length()<str[j].length())
+{
+str[j+1]=str[j];
+j--;
+}
+str[j+1]=temp;
+}
+}
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the string");
+String s=sc.nextLine();
+String[] arr=null;
+arr=s.split(" ");
+int len=arr.length;
+sort(arr,len);
+System.out.print("The sorted array is: ");
+for(int i=0;i<len;i++)
+System.out.println(arr[i]+" ");
+}
+}
+
+06)import java.util.*;
+class password
+{
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("enter the first name: ");
+String s = sc.nextLine();
+System.out.println("enter the middle name: ");
+String a = sc.nextLine();
+System.out.println("enter the last name: ");
+String p = sc.nextLine();
+System.out.println("enter the roll no: ");
+int r = sc.nextInt();
+while(a!=" ")
+{
+char f=s.charAt(0);
+char m=a.charAt(0);
+char l=p.charAt(0);
+String x=" ";
+String c1=x+f+m+l;
+System.out.print("The password is:");
+int digit=r%10000;
+String str=c1+""+digit;
+System.out.print(str);
+break;
+}
+}
+}
+
+07)import java.util.*;
+class Alphabetical
+{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the string:");
+String str = sc.nextLine();
+char arr[] = str.toCharArray();
+char temp;
+int i = 0;
+while (i < arr.length)
+{
+int j = i + 1;
+while (j < arr.length)
+{
+if (arr[j] < arr[i])
+{
+temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+}
+j += 1;
+}
+i += 1;
+}
+System.out.println(arr);
+}
+}
+
+
+08)import java.util.*;
+class character
+{
+static void extract(String str, int n, int m)
+{
+char ch[] = new char[str.length()];
+for (int i = n; i < m+1; i++)
+{
+ch[i] = str.charAt(i);
+System.out.println(ch[i]);
+}
+}
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Enter the string:");
+String s = sc.nextLine();
+System.out.println("enter a position");
+int a=sc.nextInt();
+System.out.println("enter how many characters you want to get
+extracted");
+int b=sc.nextInt();
+extract(s,a,b);
+}
+}
+
+
+09) import java.util.Scanner;
+class prog
+{
+public static void main(String args[])
+{int i=0;
+Scanner sc=new Scanner(System.in);
+System.out.println("Who is the inventor of JAVA?");
+for(i=1;i<=3;i++)
+{
+String a=sc.nextLine();
+if(a.equalsIgnoreCase("James Gosling"))
+{System.out.println("Good");
+break;}
+else
+{System.out.println("Try Again");
+}
+}
+if(i==4)
+{
+System.out.println("James Gosling is the inventor of JAVA");
+}
+}
+}
+
+
+-----------  exception assignment -----------
+
+1. Write a program to handle the ArithmeticException.
+2. Write a program for multiple catch to fire ArrayIndexOutOfBoundsException and
+StringIndexOutOfBoundsException both.
+3. Write a program to fire the NegativeArraySize exception.
+4. Define an object reference and initialize it to null. Try to call a method through this reference.
+Now wrap the in a try-catch clause to catch the exception.
+5. Write a program in Java to create a user defined exception named
+PayOutOfBoundsException (provided the monthly salary of a person is less than Rs. 10,000 /)
+and fire the exception.
+6. Write a program to fire any checked exception manually using ‘throw’ keyword.
+7. Create a class with two methods, f( ) and g( ). In g( ), throw an exception of a new type that
+you define. In f( ), call g( ), catch its exception and, in the catch clause, throw a different
+exception (of a second type that you define). Test these methods from and within main( ).
+8. Write a program that takes one string and two integers as command line argument and prints
+the reverse of the substring of the string specified by the two numbers. The program should
+handle all possible exception that may arise due to bad input.
+9. Write a demo program to illustrate the restrictions of using ‘throws’ clause in method
+overriding with regard to superclass-subclass concept. 
+
+
+01)public class Ques1 {
+public static void main(String[] args) {
+int num=10;
+try{
+num/=0;
+}catch(RuntimeException e){
+System.out.println(e);
+}
+}
+}
+
+02)public class Ques2 {
+public static void main(String[] args) {
+int[] A = {1,2,3,4,5};
+try{
+System.out.println(A[6]);
+} catch(RuntimeException e){
+System.out.println(e);
+}
+String S = "Computer";
+try{
+System.out.println(S.charAt(10));
+} catch(RuntimeException e){
+System.out.println(e);
+}
+}
+
+
+03)public class Ques3 {
+public static void main(String[] args) {
+try{
+int[] A = new int[-1];
+}catch(RuntimeException e){
+System.out.println(e);
+}
+}
+}
+
+04)class A{
+private int x;
+public A(int x){
+this.x=x;
+}
+public int getX(){
+return this.x;
+}
+}
+public class Ques4 {
+public static void main(String[] args) {
+A alpha = null;
+try{
+System.out.println(alpha.getX());
+}catch(RuntimeException e){
+System.out.println(e);
+}
+}
+}
+
+05)class PayOutOfBoundsException extends RuntimeException{
+public PayOutOfBoundsException(String e){ super(e); }
+}
+public class Ques5 {
+public static void main(String[] args) {
+int salary = 9000;
+try{
+if(salary<10000){
+throw new PayOutOfBoundsException("Provided monthly salary of a person is less than
+Rs. 10,000");
+} else {
+System.out.println("Monthly Salary is "+salary);
+}
+}catch(RuntimeException e){
+System.out.println(e);
+}
+}
+}
+
+06)public class Ques6 {
+public static void main(String[] args) {
+int a=10;
+int b=0;
+try{
+if(b==0){
+throw new ArithmeticException("Cannot Divide by Zero");
+}else{
+System.out.println("The Value: "+a/b);
+}
+}catch(RuntimeException e){
+System.out.println(e);
+}
+}
+}
+
+
+07)class UDException extends RuntimeException{
+public UDException(String e){
+super(e);
+}
+}
+class A{
+public void f(){
+try{
+System.out.println("Function F");
+this.g();
+}catch(RuntimeException e){
+System.out.println(e);
+}
+}
+public void g() {
+System.out.println("Function G");
+throw new UDException("User Defined Exception");
+}
+}
+public class Ques7 {
+public static void main(String[] args) {
+A alpha = new A();alpha.f();
+}
+}
+
+
+08)public class Ques8 {
+public static void main(String[] args) {
+String string = args[0];
+int startIndex = Integer.parseInt(args[1]);
+int endIndex = Integer.parseInt(args[2]);
+int length = string.length();
+try{
+if(startIndex<0 || endIndex>=length || endIndex<0 || startIndex>=length){
+throw new StringIndexOutOfBoundsException();
+} else if (startIndex>endIndex){
+throw new StringIndexOutOfBoundsException("StartIndex Cannot Be Greater Than
+EndIndex");
+}
+System.out.println(string.substring(startIndex, endIndex));
+}catch(StringIndexOutOfBoundsException e){
+System.out.println(e);
+}
+}
+}
+
+
+-----------  Complex Number assignment -----------
+
+01)Write a java program to add two complex no
+02)Write a java program to multiply two complex no.
+03)Writea java programtoimplementstackusingbasic functionlikepush, pop and display.
+04)Use the stack data structure to sort n values
+
+
+01)class Complex
+{
+double real; double imag;
+Complex(double r,double i){
+real=r; imag=i;
+}
+void sum( Complex c){
+real=real+c.real; imag=imag+c.imag;
+System.out.println("sum of give imaginary number is:"+real+"+"+imag+"i");
+}
+public static void main(String[] args){
+Complex a=new Complex(3.2,4.0);
+Complex b=new Complex(6.2,3.0);
+System.out.println("first imaginary number is:"+a.real+"+"+a.imag+"i");
+System.out.println("second imaginary number is:"+b.real+"+"+b.imag+"i");
+a.sum(b);
+}
+} 
+
+02)class Complex{
+double real; double imag;
+Complex(double r,double i ){
+real=r; imag=i;
+}
+void mul( Complex c){
+real=(real*c.real)-(imag*c.imag); imag=(real*c.imag)+(imag*c.real);
+System.out.println("Mul of give imaginary number is:"+real+"+"+imag+"i");
+}
+public static void main(String[] args){
+Complex a=new Complex(3.2,4.0);
+Complex b=new Complex(6.2,3.0);
+System.out.println("first imaginary number is:"+a.real+"+"+a.imag+"i");
+System.out.println("second imaginary number is:"+b.real+"+"+b.imag+"i");
+a.mul(b);
+}
+}
+
+03)class stack{
+int[] arr; int top=-1; stack(int n){
+arr=new int[n];
+}
+void push(int a){ top++; arr[top]=a;
+}
+void pop(){
+top--;
+}
+void disp(){
+for(int i=0;i<=top;i++){ System.out.print(arr[i]+",");
+}
+System.out.println();
+}}
+class Main{
+public static void main(String[] args){ stack s= new stack(8);
+s.push(1);
+s.push(2);
+s.push(3);
+s.push(4);
+s.push(5);
+s.push(6);
+s.push(7);
+s.pop();
+s.pop();
+s.disp();
+}
+}
+
+
+04)import java.io.*;
+import java.util.*;
+import java.util.Stack;
+class SortArrayWithStack {
+ static Stack<Integer> sortStack(Stack<Integer> input) {
+ Stack<Integer> tmpStack = new Stack<Integer>();
+ while (!input.empty()) {
+ int tmp = input.peek();
+ input.pop();
+ while (!tmpStack.empty() && tmpStack.peek() < tmp) {
+ input.push(tmpStack.peek());
+ tmpStack.pop();
+ }
+ tmpStack.push(tmp);
+ }
+ return tmpStack;
+ }
+ static void sortUsingStack(int[] arr, int n) {
+ Stack<Integer> input = new Stack<Integer>();
+ for (int i = 0; i < n; i++) {
+ input.push(arr[i]);
+ }
+ Stack<Integer> tmpStack = sortStack(input);
+ for (int i = 0; i < n; i++) {
+ arr[i] = tmpStack.peek();
+ tmpStack.pop();
+ }
+ }
+ public static void main(String args[]) {
+ Scanner sc=new Scanner(System.in);
+ System.out.println("Enter the length of the array");
+ int n=sc.nextInt();
+ System.out.println("Enter the array elements:");
+ int[] a = new int[n];
+ for(int i=0;i<n;i++)
+{
+ a[i]=sc.nextInt();
+}
+ sortUsingStack(a, n);
+ for (int i = 0; i < n; i++) {
+ System.out.print(a[i] + " ");
+ }
+ }
+}
+
+
